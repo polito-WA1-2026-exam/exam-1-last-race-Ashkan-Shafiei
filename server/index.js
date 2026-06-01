@@ -15,7 +15,7 @@ import {
 
 const app = express();
 const port = 3001;
-const allowedOrigins = ["http://localhost:5173", "http://127.0.0.1:5173"];
+const allowedOriginPattern = /^http:\/\/(localhost|127\.0\.0\.1):\d+$/;
 const initialCoins = 20;
 const minimumDistance = 3;
 
@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(
   cors({
     origin(origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
+      if (!origin || allowedOriginPattern.test(origin)) {
         callback(null, true);
         return;
       }
@@ -154,6 +154,11 @@ function selectRandomItem(items) {
   return items[Math.floor(Math.random() * items.length)];
 }
 
+function toPublicSegment(segment) {
+  const { lineIds, lineNames, ...publicSegment } = segment;
+  return publicSegment;
+}
+
 app.get("/", (req, res) => {
   res.json({ message: "Last Race API server is running." });
 });
@@ -228,7 +233,7 @@ app.get(
     res.json({
       stations: network.stations,
       lines: network.lines,
-      segments: network.segments.map(({ lineIds, ...segment }) => segment),
+      segments: network.segments.map(toPublicSegment),
     });
   }),
 );
@@ -274,7 +279,7 @@ app.post(
         actualShortestDistance: distance,
       },
       planningSeconds: 90,
-      segments: network.segments.map(({ lineIds, ...segment }) => segment),
+      segments: network.segments.map(toPublicSegment),
       stations: network.stations.map((station) => ({
         ...station,
         isInterchange: network.interchangeStationIds.has(station.id),

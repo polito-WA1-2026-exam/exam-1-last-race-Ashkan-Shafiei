@@ -626,7 +626,6 @@ function RouteBuilder({
             <span>
               {segment.stationAName} - {segment.stationBName}
             </span>
-            <small>{segment.lineNames.join(", ")}</small>
           </button>
         ))}
       </div>

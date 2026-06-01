@@ -1,5 +1,5 @@
 # Exam #1: "Last Race"
-## Student: s123456 LASTNAME FIRSTNAME
+## Student: s342583 Ashkan Shafiei
 
 ## React Client Application Routes
 
@@ -47,9 +47,9 @@
 
 ## Screenshot
 
-![Game screenshot](./img/game.svg)
+![Game screenshot](./img/game.png)
 
-![Ranking screenshot](./img/ranking.svg)
+![Ranking screenshot](./img/ranking.png)
 
 ## Users Credentials
 

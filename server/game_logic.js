@@ -80,7 +80,8 @@ export function findCandidateDestinations(stations, adjacency, startStationId, m
     if (station.id === startStationId) {
       return false;
     }
-    return shortestStopDistance(adjacency, startStationId, station.id) >= minimumStops;
+    const distance = shortestStopDistance(adjacency, startStationId, station.id);
+    return Number.isFinite(distance) && distance >= minimumStops;
   });
 }
 
