@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <rect width="1200" height="760" fill="#f4f6f5"/>
+  <rect x="0" y="0" width="1200" height="64" fill="#ffffff"/>
+  <text x="32" y="40" font-family="Segoe UI, Arial" font-size="24" font-weight="800" fill="#183642">Last Race</text>
+  <text x="220" y="39" font-family="Segoe UI, Arial" font-size="15" fill="#40505b">Instructions</text>
+  <text x="330" y="39" font-family="Segoe UI, Arial" font-size="15" fill="#0f766e">Play</text>
+  <text x="390" y="39" font-family="Segoe UI, Arial" font-size="15" fill="#40505b">Ranking</text>
+  <text x="480" y="39" font-family="Segoe UI, Arial" font-size="15" fill="#40505b">History</text>
+  <rect x="32" y="100" width="740" height="610" rx="8" fill="#ffffff" stroke="#d8dedc"/>
+  <text x="60" y="138" font-family="Segoe UI, Arial" font-size="13" font-weight="800" fill="#b45309">PLANNING</text>
+  <text x="60" y="178" font-family="Segoe UI, Arial" font-size="42" font-weight="800" fill="#172026">Metro network</text>
+  <rect x="675" y="118" width="70" height="38" rx="6" fill="#172026"/>
+  <text x="697" y="143" font-family="Segoe UI, Arial" font-size="18" font-weight="800" fill="#ffffff">81s</text>
+  <rect x="60" y="205" width="680" height="430" rx="8" fill="#fbfcfb" stroke="#ccd6d3"/>
+  <g stroke-linecap="round" stroke-linejoin="round" fill="none" stroke-width="8">
+    <path d="M360 255 L380 410 L430 525" stroke="#172026" stroke-dasharray="7 7"/>
+    <path d="M180 465 L290 455 L380 410 L520 455 L640 505" stroke="#1b6ca8" opacity="0.28"/>
+    <path d="M340 255 L380 410 L430 255 L455 165" stroke="#d72638" opacity="0.28"/>
+    <path d="M190 290 L360 255 L455 270 L585 210" stroke="#2e7d32" opacity="0.28"/>
+    <path d="M185 200 L280 210 L430 255 L560 245 L520 455" stroke="#f9a825" opacity="0.28"/>
+  </g>
+  <g font-family="Segoe UI, Arial" font-size="14" font-weight="700" fill="#172026">
+    <circle cx="380" cy="410" r="14" fill="#0f766e" stroke="#172026" stroke-width="3"/>
+    <text x="400" y="414">Central</text>
+    <circle cx="520" cy="455" r="12" fill="#b45309" stroke="#172026" stroke-width="3"/>
+    <text x="540" y="460">University</text>
+    <circle cx="430" cy="255" r="12" fill="#ffffff" stroke="#172026" stroke-width="3"/>
+    <text x="450" y="260">Old Town</text>
+    <circle cx="360" cy="255" r="12" fill="#ffffff" stroke="#172026" stroke-width="3"/>
+    <text x="250" y="250">Museum</text>
+    <circle cx="290" cy="455" r="10" fill="#ffffff" stroke="#172026" stroke-width="3"/>
+    <text x="210" y="488">Market</text>
+  </g>
+  <rect x="805" y="100" width="363" height="610" rx="8" fill="#ffffff" stroke="#d8dedc"/>
+  <text x="833" y="145" font-family="Segoe UI, Arial" font-size="26" font-weight="800" fill="#172026">Planning</text>
+  <rect x="833" y="175" width="307" height="44" rx="6" fill="#f0f4f3"/>
+  <text x="850" y="203" font-family="Segoe UI, Arial" font-size="16" font-weight="700" fill="#24313a">From Central</text>
+  <rect x="833" y="229" width="307" height="44" rx="6" fill="#f0f4f3"/>
+  <text x="850" y="257" font-family="Segoe UI, Arial" font-size="16" font-weight="700" fill="#24313a">To University</text>
+  <rect x="833" y="294" width="86" height="38" rx="6" fill="#e8eeec"/>
+  <text x="858" y="318" font-family="Segoe UI, Arial" font-size="15" font-weight="700" fill="#26333d">Undo</text>
+  <rect x="929" y="294" width="86" height="38" rx="6" fill="#e8eeec"/>
+  <text x="956" y="318" font-family="Segoe UI, Arial" font-size="15" font-weight="700" fill="#26333d">Clear</text>
+  <rect x="1025" y="294" width="115" height="38" rx="6" fill="#0f766e"/>
+  <text x="1042" y="318" font-family="Segoe UI, Arial" font-size="15" font-weight="800" fill="#ffffff">Submit route</text>
+  <g font-family="Segoe UI, Arial" font-size="15" fill="#172026">
+    <rect x="833" y="370" width="307" height="48" rx="6" fill="#edf3f1"/>
+    <text x="850" y="399">Central - Museum</text>
+    <rect x="833" y="430" width="307" height="48" rx="6" fill="#edf3f1"/>
+    <text x="850" y="459">Museum - Old Town</text>
+    <rect x="833" y="490" width="307" height="48" rx="6" fill="#edf3f1"/>
+    <text x="850" y="519">Old Town - Theatre</text>
+  </g>
+</svg>

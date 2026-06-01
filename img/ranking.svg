@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <rect width="1200" height="760" fill="#f4f6f5"/>
+  <rect x="0" y="0" width="1200" height="64" fill="#ffffff"/>
+  <text x="32" y="40" font-family="Segoe UI, Arial" font-size="24" font-weight="800" fill="#183642">Last Race</text>
+  <text x="220" y="39" font-family="Segoe UI, Arial" font-size="15" fill="#40505b">Instructions</text>
+  <text x="330" y="39" font-family="Segoe UI, Arial" font-size="15" fill="#40505b">Play</text>
+  <text x="390" y="39" font-family="Segoe UI, Arial" font-size="15" fill="#0f766e">Ranking</text>
+  <text x="480" y="39" font-family="Segoe UI, Arial" font-size="15" fill="#40505b">History</text>
+  <text x="190" y="145" font-family="Segoe UI, Arial" font-size="44" font-weight="800" fill="#172026">General ranking</text>
+  <rect x="190" y="185" width="820" height="260" rx="8" fill="#ffffff" stroke="#d8dedc"/>
+  <rect x="190" y="185" width="820" height="58" rx="8" fill="#183642"/>
+  <rect x="190" y="226" width="820" height="17" fill="#183642"/>
+  <g font-family="Segoe UI, Arial" font-size="16">
+    <text x="220" y="222" font-weight="800" fill="#ffffff">Player</text>
+    <text x="620" y="222" font-weight="800" fill="#ffffff">Best score</text>
+    <text x="815" y="222" font-weight="800" fill="#ffffff">Completed games</text>
+    <line x1="190" y1="303" x2="1010" y2="303" stroke="#e2e8e6"/>
+    <line x1="190" y1="363" x2="1010" y2="363" stroke="#e2e8e6"/>
+    <text x="220" y="282" fill="#172026">Alice Runner</text>
+    <text x="620" y="282" fill="#172026">18</text>
+    <text x="815" y="282" fill="#172026">2</text>
+    <text x="220" y="342" fill="#172026">Bob Navigator</text>
+    <text x="620" y="342" fill="#172026">10</text>
+    <text x="815" y="342" fill="#172026">1</text>
+    <text x="220" y="402" fill="#172026">Carol Planner</text>
+    <text x="620" y="402" fill="#172026">0</text>
+    <text x="815" y="402" fill="#172026">0</text>
+  </g>
+  <rect x="190" y="500" width="820" height="120" rx="8" fill="#ffffff" stroke="#d8dedc"/>
+  <text x="220" y="545" font-family="Segoe UI, Arial" font-size="24" font-weight="800" fill="#172026">Ranking rule</text>
+  <text x="220" y="582" font-family="Segoe UI, Arial" font-size="17" fill="#53616d">Each registered user's best completed game is shown here.</text>
+</svg>
