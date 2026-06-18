@@ -181,13 +181,25 @@ function CharacterScene({ compact = false }) {
   );
 }
 
+const defaultRules = [
+  "Log in to view the underground network and play.",
+  "Each game starts with 20 coins.",
+  "Study the complete map before the planning phase begins.",
+  "Build a route from the assigned start to the destination within 90 seconds.",
+  "The server validates the route and applies one random event to each travelled segment.",
+  "Invalid or incomplete routes score zero.",
+  "The ranking is based on each player's best completed game.",
+];
+
 function HomePage() {
   const { user } = useAuth();
   const [instructions, setInstructions] = useState(null);
 
   useEffect(() => {
-    api.getInstructions().then(setInstructions);
+    api.getInstructions().then(setInstructions).catch(() => setInstructions(null));
   }, []);
+
+  const rules = instructions?.rules?.length ? instructions.rules : defaultRules;
 
   return (
     <main className="page home-layout">
@@ -216,7 +228,7 @@ function HomePage() {
       <section className="rules-panel" aria-label="Game rules">
         <h2>{instructions?.title ?? "Last Race"}</h2>
         <ol>
-          {(instructions?.rules ?? []).map((rule) => (
+          {rules.map((rule) => (
             <li key={rule}>{rule}</li>
           ))}
         </ol>
@@ -428,6 +440,7 @@ function PlayPage() {
           startStationId={startStationId}
           destinationStationId={destinationStationId}
         />
+        {phase === "setup" && <LineLegend lines={network.lines} />}
       </section>
 
       <section className="side-panel">
@@ -491,6 +504,19 @@ function PlayPage() {
         {error && <p className="error-message">{error}</p>}
       </section>
     </main>
+  );
+}
+
+function LineLegend({ lines }) {
+  return (
+    <div className="line-legend" aria-label="Metro lines">
+      {lines.map((line) => (
+        <span key={line.id}>
+          <i style={{ backgroundColor: line.color }} aria-hidden="true" />
+          {line.name}
+        </span>
+      ))}
+    </div>
   );
 }
 

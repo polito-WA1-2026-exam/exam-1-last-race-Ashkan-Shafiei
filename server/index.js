@@ -9,7 +9,6 @@ import {
   buildAdjacency,
   buildSegments,
   findCandidateDestinations,
-  shortestStopDistance,
   validateRoute,
 } from "./game_logic.js";
 
@@ -18,6 +17,8 @@ const port = 3001;
 const allowedOriginPattern = /^http:\/\/(localhost|127\.0\.0\.1):\d+$/;
 const initialCoins = 20;
 const minimumDistance = 3;
+const planningSeconds = 90;
+const planningGraceSeconds = 3;
 
 app.use(express.json());
 app.use(
@@ -154,6 +155,16 @@ function selectRandomItem(items) {
   return items[Math.floor(Math.random() * items.length)];
 }
 
+function isPlanningDeadlineExpired(game) {
+  const createdAt = Date.parse(game.created_at);
+
+  if (!Number.isFinite(createdAt)) {
+    return false;
+  }
+
+  return Date.now() > createdAt + (planningSeconds + planningGraceSeconds) * 1000;
+}
+
 function toPublicSegment(segment) {
   const { lineIds, lineNames, ...publicSegment } = segment;
   return publicSegment;
@@ -258,7 +269,7 @@ app.post(
     }
 
     const destinationStation = selectRandomItem(candidates);
-    const distance = shortestStopDistance(adjacency, startStation.id, destinationStation.id);
+    const createdAt = new Date().toISOString();
 
     const { lastID } = await run(
       db,
@@ -266,7 +277,7 @@ app.post(
         user_id, start_station_id, destination_station_id, initial_coins,
         final_score, status, created_at, completed_at
       ) VALUES (?, ?, ?, ?, NULL, 'in_progress', ?, NULL)`,
-      [req.user.id, startStation.id, destinationStation.id, initialCoins, new Date().toISOString()],
+      [req.user.id, startStation.id, destinationStation.id, initialCoins, createdAt],
     );
 
     res.status(201).json({
@@ -276,14 +287,10 @@ app.post(
         destinationStation,
         initialCoins,
         minimumDistance,
-        actualShortestDistance: distance,
       },
-      planningSeconds: 90,
+      planningSeconds,
       segments: network.segments.map(toPublicSegment),
-      stations: network.stations.map((station) => ({
-        ...station,
-        isInterchange: network.interchangeStationIds.has(station.id),
-      })),
+      stations: network.stations,
     });
   }),
 );
@@ -309,6 +316,22 @@ app.post(
 
     if (game.status !== "in_progress") {
       res.status(409).json({ error: "This game has already been completed." });
+      return;
+    }
+
+    if (isPlanningDeadlineExpired(game)) {
+      await run(
+        db,
+        "UPDATE games SET final_score = 0, status = 'completed', completed_at = ? WHERE id = ?",
+        [new Date().toISOString(), gameId],
+      );
+      res.json({
+        valid: false,
+        reason: "The planning time limit has expired.",
+        initialCoins,
+        finalScore: 0,
+        steps: [],
+      });
       return;
     }
 
@@ -432,7 +455,6 @@ app.get(
       JOIN games g ON g.user_id = u.id
       WHERE g.status = 'completed'
       GROUP BY u.id
-      HAVING best_score > 0
       ORDER BY best_score DESC, completed_games ASC, u.username ASC`,
     );
 

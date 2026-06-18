@@ -97,7 +97,9 @@ const completedGames = [
       ["Harbor", "Market", "Ticket inspector bonus for a valid pass", 22],
       ["Market", "Central", "Wrong platform announcement", 19],
       ["Central", "Museum", "Street musician improves morale", 22],
-      ["Museum", "Hilltop", "Escalator maintenance blocks the exit", 21],
+      ["Museum", "Library", "Escalator maintenance blocks the exit", 21],
+      ["Library", "Tech Park", "Express tunnel shortcut opens", 25],
+      ["Tech Park", "Hilltop", "Signal failure slows the train", 21],
     ],
   },
 ];
