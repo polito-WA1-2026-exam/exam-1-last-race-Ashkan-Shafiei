@@ -410,14 +410,6 @@ function PlayPage() {
   return (
     <main className="page play-grid">
       <section className="map-panel">
-        {phase !== "setup" && (
-          <div className="map-mascot" aria-hidden="true">
-            <div className="runner-dot" />
-            <div className="route-pulse one" />
-            <div className="route-pulse two" />
-            <div className="route-pulse three" />
-          </div>
-        )}
         <div className="section-heading">
           <div>
             <p className="eyebrow">{phase}</p>
